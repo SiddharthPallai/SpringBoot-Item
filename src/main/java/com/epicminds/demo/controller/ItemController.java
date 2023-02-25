@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ public class ItemController {
 
     @GetMapping("/items/{id}")
     public ResponseEntity<Item> getItem(@PathVariable("id") Integer itemId) {
-        return ResponseEntity.ok().body(itemService.getItemById(itemId));
+        return ResponseEntity.ok(itemService.getItemById(itemId));
     }
 
     @GetMapping("/items")
@@ -36,8 +37,8 @@ public class ItemController {
     }
 
     @PutMapping("/items/{id}")
-    public ResponseEntity<Item> updateItem(@PathVariable("id") Integer itemId, @RequestBody Item item) {
-        return ResponseEntity.ok((itemService.updateItem(itemId, item)));
+    public ResponseEntity<Item> updateItem(@PathVariable("id") Integer itemId, @Valid @RequestBody Item item) {
+        return ResponseEntity.ok(itemService.updateItem(itemId, item));
     }
 
     @DeleteMapping("items/{id}")

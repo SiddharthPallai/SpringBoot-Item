@@ -3,6 +3,7 @@ package com.epicminds.demo.service;
 import com.epicminds.demo.exception.ItemNotFoundException;
 import com.epicminds.demo.model.Item;
 import com.epicminds.demo.repository.ItemRepo;
+import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.Objects;
  * @author Sidharth
  */
 @Service
+@CommonsLog
 public class ItemServiceImpl implements ItemService {
 
     @Autowired
@@ -43,6 +45,10 @@ public class ItemServiceImpl implements ItemService {
         item1.setName(Objects.isNull(item.getName()) ? item1.getName() : item.getName());
         item1.setQuantity(Objects.isNull(item.getQuantity()) ? item1.getQuantity() : item.getQuantity());
         item1.setPrice(Objects.isNull(item.getPrice()) ? item1.getPrice() : item.getPrice());
+//        System.out.println("Hello-------------");
+//        String a = null;
+//        a.toString().toCharArray();
+        log.debug("Hello----------------------");
         return itemRepo.save(item1);
     }
 
