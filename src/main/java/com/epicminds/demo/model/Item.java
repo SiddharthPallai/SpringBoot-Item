@@ -29,4 +29,8 @@ public class Item {
     Double price;
     @Column(name = "quantity")
     Integer quantity;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="item_type_id" , referencedColumnName = "id")
+    ItemType itemType;
 }

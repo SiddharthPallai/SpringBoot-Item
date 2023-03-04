@@ -45,9 +45,9 @@ public class ItemServiceImpl implements ItemService {
         item1.setName(Objects.isNull(item.getName()) ? item1.getName() : item.getName());
         item1.setQuantity(Objects.isNull(item.getQuantity()) ? item1.getQuantity() : item.getQuantity());
         item1.setPrice(Objects.isNull(item.getPrice()) ? item1.getPrice() : item.getPrice());
-//        System.out.println("Hello-------------");
-//        String a = null;
-//        a.toString().toCharArray();
+        System.out.println("Hello-------------");
+        String a = null;
+        a.toString();
         log.debug("Hello----------------------");
         return itemRepo.save(item1);
     }

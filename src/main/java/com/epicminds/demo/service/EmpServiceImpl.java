@@ -2,6 +2,7 @@ package com.epicminds.demo.service;
 
 import com.epicminds.demo.model.Employee;
 import com.epicminds.demo.repository.EmpRepo;
+import com.epicminds.demo.repository.ItemTypeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class EmpServiceImpl implements EmpService{
 
     @Autowired
     EmpRepo empRepo;
+
+    @Autowired
+    ItemTypeRepo itemTypeRepo;
 
     @Override
     public Employee add(Employee employee) {
