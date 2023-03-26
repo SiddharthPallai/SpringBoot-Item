@@ -1,5 +1,7 @@
 package com.epicminds.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,16 +16,24 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name="item-type")
+@Table(name="item_type")
 public class ItemType {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(name="type")
-    String type;
+    private String type;
 
-    @OneToOne(mappedBy = "itemType")
-    Item item;
+    //For 1:1 UND and Source
+//    @OneToOne(cascade = CascadeType.ALL)
+//    //@JoinColumn(name = "item_id")
+//    private Item item;
+
+    //For 1:1 BND
+//    @JsonBackReference
+//
+//    @OneToOne(mappedBy = "itemType")
+//    private Item item;
 
 }

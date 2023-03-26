@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ItemRepo extends JpaRepository<Item, Integer> {
+  // Item findByName(String name);
+  //  Item findByPrice(Double price);
 }

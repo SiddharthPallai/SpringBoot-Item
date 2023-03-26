@@ -1,6 +1,7 @@
 package com.epicminds.demo.controller;
 
 import com.epicminds.demo.model.Item;
+import com.epicminds.demo.model.ItemType;
 import com.epicminds.demo.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,14 +27,36 @@ public class ItemController {
         return new ResponseEntity<>(itemService.addItem(item), HttpStatus.CREATED);
     }
 
+    //Ideally new repo and controller for ItemType if ItemType is the source entity for 1:1 unidirectional
+    @PostMapping("/items/type")
+    public ResponseEntity<Object> createItemType(@RequestBody ItemType itemType) {
+        return new ResponseEntity<>(itemService.addItemType(itemType), HttpStatus.CREATED);
+    }
+
     @GetMapping("/items/{id}")
     public ResponseEntity<Item> getItem(@PathVariable("id") Integer itemId) {
         return ResponseEntity.ok(itemService.getItemById(itemId));
     }
 
+    @GetMapping("/items/types/{type}")
+    public ResponseEntity<List<ItemType>> getItem(@PathVariable("type") String type) {
+        return ResponseEntity.ok(itemService.getItemsByItemType(type));
+    }
+
+    @GetMapping("/items/types")
+    public ResponseEntity<List<ItemType>> getItem() {
+        return ResponseEntity.ok(itemService.getItemTypes());
+    }
+
+
     @GetMapping("/items")
     public List<Item> getItems() {
         return itemService.getItems();
+    }
+
+    @GetMapping("/items/bnd/")
+    public List<ItemType> getItemTypes() {
+        return itemService.getItemTypes();
     }
 
     @PutMapping("/items/{id}")
